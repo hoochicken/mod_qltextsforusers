@@ -33,11 +33,11 @@ $textForUnloggedUser = !$qltextsforusersHelper->checkUserIsLoggedIn()
 if ($qltextsforusersHelper->checkUserIsLoggedIn()) {
     // for defined user groups, when logged in and usergroup in known
     for ($select = 1; $select <= $fieldCount; $select++) {
-        $usergroup = $qltextsforusersHelper->getUsergroupFromParams($select);
+        $usergroup = $qltextsforusersHelper->getUsergroupSelectFromParam($select);
         if (empty($usergroup) || !$qltextsforusersHelper->checkIfUserBelongsToUsergroup($usergroup)) {
             continue;
         }
-        $textValue = $qltextsforusersHelper->getTextFromParams($select);
+        $textValue = $qltextsforusersHelper->getUsergroupTextFromParam($select, $prepareContent);
         if (empty($textValue) || empty(strip_tags(trim($textValue)))) {
             continue;
         }

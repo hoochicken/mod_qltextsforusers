@@ -41,16 +41,16 @@ class QltextsforusersHelper
         $this->user = $user;
     }
 
-    public function getUsergroupFromParams(int $select): int
+    public function getUsergroupSelectFromParam(int $select): int
     {
         $keyUsergroup = sprintf(static::PARAMS_USERGROUP_II_SELECT, str_pad($select, 2, '0', STR_PAD_LEFT));
         return $this->params->get($keyUsergroup, 0);
     }
 
-    public function getTextFromParams(int $select): string
+    public function getUsergroupTextFromParam(int $select, bool $prepareContent = true): ?string
     {
         $keyText = sprintf(static::PARAMS_USERGROUP_II_TEXT, str_pad($select, 2, '0', STR_PAD_LEFT));
-        return $this->params->get($keyText, '');
+        return $this->getTextFromParam($keyText, $prepareContent);
     }
 
     public function checkIfUserBelongsToUsergroup(?int $usergroup): bool
