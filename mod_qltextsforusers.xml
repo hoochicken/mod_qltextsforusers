@@ -43,28 +43,34 @@
 	<config>
 		<fields name="params" addfieldpath="/modules/mod_qltextsforusers/php/fields" addrulepath="/modules/mod_qltextsforusers/php/rules">
             <fieldset name="basic">
-				<field name="all_users_text" label="MOD_QLTEXTSFORUSERS_ALL_USERS_TEXT" type="editor" filter="safehtml" height="150" />
-				<field name="unlogged_user_text" label="MOD_QLTEXTSFORUSERS_UNLOGGED_USER_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="all_users_text" label="MOD_QLTEXTSFORUSERS_ALL_USERS_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
+				<field name="unlogged_user_text" label="MOD_QLTEXTSFORUSERS_UNLOGGED_USER_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
 				<field name="usergroup_01_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_01_SELECT" type="usergrouplist">
 					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
 				</field>
-				<field name="usergroup_01_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_01_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_01_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_01_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
 				<field name="usergroup_02_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_02_SELECT" type="usergrouplist">
 					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
 				</field>
-				<field name="usergroup_02_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_02_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_02_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_02_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
 				<field name="usergroup_03_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_03_SELECT" type="usergrouplist">
 					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
 				</field>
-				<field name="usergroup_03_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_03_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_03_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_03_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
 				<field name="usergroup_04_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_04_SELECT" type="usergrouplist">
 					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
 				</field>
-				<field name="usergroup_04_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_04_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_04_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_04_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
 				<field name="usergroup_05_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_05_SELECT" type="usergrouplist">
 					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
 				</field>
-				<field name="usergroup_05_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_05_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_05_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_05_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
+			</fieldset>
+            <fieldset name="content">
+				<field name="content_prepare" type="radio" class="btn-group btn-group-yesno" label="MOD_QLTEXTSFORUSERS_CONTENT_PREPARE" default="1">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 			</fieldset>
 
 			<fieldset

@@ -17,36 +17,31 @@ defined('_JEXEC') or die;
 /** @var Registry $params */
 /** @var \stdClass $module  */
 $fieldCount = 5;
+$prepareContent = (bool)$params->get('content_prepare', true);
 $textForUsergroups = [];
 
 $user = QltextsforusersHelper::getJoomlaUser();
 $qltextsforusersHelper = new QltextsforusersHelper($module, $params, $user);
 
 // for all users
-$textForAllUsersRaw = $params->get('all_users_text');
-$textForAllUsersRaw = is_null($textForAllUsersRaw) || empty(strip_tags($textForAllUsersRaw)) ? null : $textForAllUsersRaw;
-$textForAllUsers = new Text($textForAllUsersRaw);
+$textForAllUsers = new Text($qltextsforusersHelper->getTextFromParam(QltextsforusersHelper::PARAMS_ALL_USERS_TEXT));
 
-$textForUnloggedUser = new Text('');
-if (!$qltextsforusersHelper->checkUserIsLoggedIn()) {
+$textForUnloggedUser = !$qltextsforusersHelper->checkUserIsLoggedIn()
+    ? new Text($qltextsforusersHelper->getTextFromParam(QltextsforusersHelper::PARAMS_UNLOGGED_USERS_TEXT))
+    : new Text('');
 
-    // for logged-in users
-    $textForUnloggedUserRaw = $params->get('unlogged_user_text');
-    $textForUnloggedUserRaw = is_null($textForUnloggedUserRaw) || empty(strip_tags($textForUnloggedUserRaw)) ? null : $textForUnloggedUserRaw;
-    $textForUnloggedUser = new Text($textForUnloggedUserRaw);
-} else {
-
+if ($qltextsforusersHelper->checkUserIsLoggedIn()) {
     // for defined user groups, when logged in and usergroup in known
-    for ($i = 1; $i <= $fieldCount; $i++) {
-        $keyUsergroup = sprintf('usergroup_%s_select', str_pad($i, 2, '0', STR_PAD_LEFT));
-        $usergroup = $params->get($keyUsergroup);
+    for ($select = 1; $select <= $fieldCount; $select++) {
+        $usergroup = $qltextsforusersHelper->getUsergroupFromParams($select);
         if (empty($usergroup) || !$qltextsforusersHelper->checkIfUserBelongsToUsergroup($usergroup)) {
             continue;
         }
-        $keyText = sprintf('usergroup_%s_text', str_pad($i, 2, '0', STR_PAD_LEFT));
-        $textValue = $params->get($keyText);
-        $text = (new Text($textValue))->setUserGroupId($usergroup)->setUserGroupSelect($i);
-        $textForUsergroups[] = $text;
+        $textValue = $qltextsforusersHelper->getTextFromParams($select);
+        if (empty($textValue) || empty(strip_tags(trim($textValue)))) {
+            continue;
+        }
+        $textForUsergroups[] = (new Text($textValue))->setUserGroupId($usergroup)->setUserGroupSelect($select);
     }
 }
 
