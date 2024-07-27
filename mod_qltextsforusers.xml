@@ -5,12 +5,14 @@
 	method="upgrade">
 	<name>qltextsforusers</name>
 	<author>Mareike Riegel</author>
-	<creationDate>2023</creationDate>
+	<creationDate>2024</creationDate>
 	<copyright>ql.de</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>mareike.riegel@ql.de</authorEmail>
 	<authorUrl>ql.de</authorUrl>
 	<version>1.0.0</version>
+
+	<namespace path="src">Ql\Module\Qltextsforusers</namespace>
 	<description>MOD_QLTEXTSFORUSERS_XML_DESCRIPTION</description>
 	<updateservers>
         <server type="extension" priority="1" name="qltextsforusers - Updates">https://raw.githubusercontent.com/hoochicken/mod_qltextsforusers/main/_jupdate/mod_qltextsforusers.xml</server>
@@ -21,9 +23,9 @@
 		<folder>css</folder>
 		<folder>js</folder>
 		<folder>language</folder>
+		<folder>src</folder>
 		<folder>tmpl</folder>
 		<folder>php</folder>
-		<filename>QltextsforusersHelper.php</filename>
 		<filename>index.html</filename>
 		<filename>license.txt</filename>
 		<filename>mod_qltextsforusers.xml</filename>
@@ -41,8 +43,29 @@
 	<config>
 		<fields name="params" addfieldpath="/modules/mod_qltextsforusers/php/fields" addrulepath="/modules/mod_qltextsforusers/php/rules">
             <fieldset name="basic">
-
-            </fieldset>
+				<field name="all_users_text" label="MOD_QLTEXTSFORUSERS_ALL_USERS_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="unlogged_user_text" label="MOD_QLTEXTSFORUSERS_UNLOGGED_USER_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_01_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_01_SELECT" type="usergrouplist">
+					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
+				</field>
+				<field name="usergroup_01_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_01_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_02_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_02_SELECT" type="usergrouplist">
+					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
+				</field>
+				<field name="usergroup_02_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_02_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_03_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_03_SELECT" type="usergrouplist">
+					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
+				</field>
+				<field name="usergroup_03_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_03_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_04_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_04_SELECT" type="usergrouplist">
+					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
+				</field>
+				<field name="usergroup_04_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_04_TEXT" type="editor" filter="safehtml" height="150" />
+				<field name="usergroup_05_select" label="MOD_QLTEXTSFORUSERS_USERGROUP_05_SELECT" type="usergrouplist">
+					<option value="0">MOD_QLTEXTSFORUSERS_PLEASE_CHOOSE</option>
+				</field>
+				<field name="usergroup_05_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_05_TEXT" type="editor" filter="safehtml" height="150" />
+			</fieldset>
 
 			<fieldset
 				name="advanced">
