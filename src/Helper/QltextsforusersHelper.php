@@ -71,7 +71,7 @@ class QltextsforusersHelper
     {
         $text = $this->params->get($param);
         $text = is_null($text) || empty(strip_tags($text)) ? null : $text;
-        if ($prepareContent) {
+        if (is_string($text) && $prepareContent) {
             $text = $this->prepareContent($text);
         }
         return $text;
@@ -90,8 +90,11 @@ class QltextsforusersHelper
         return !empty($this->user->id);
     }
 
-    public function prepareContent(string $text): string
+    public function prepareContent(?string $text): string
     {
+        if (empty($text)) {
+            return $text;
+        }
         $item = new stdClass();
         $item->text = $text;
         $item->fulltext = $text;
