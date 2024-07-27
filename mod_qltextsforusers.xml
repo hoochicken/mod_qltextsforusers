@@ -25,7 +25,6 @@
 		<folder>language</folder>
 		<folder>src</folder>
 		<folder>tmpl</folder>
-		<folder>php</folder>
 		<filename>index.html</filename>
 		<filename>license.txt</filename>
 		<filename>mod_qltextsforusers.xml</filename>
