@@ -22,8 +22,7 @@ $targetAfterLogin = (string)$params->get('target_page_after_login', '');
 $textForUsergroups = [];
 
 $user = QltextsforusersHelper::getJoomlaUser();
-$input = getApplication()->getInput()
-$qltextsforusersHelper = new QltextsforusersHelper($module, $params, $user, $input);
+$qltextsforusersHelper = new QltextsforusersHelper($module, $params, $user);
 
 // for all users
 $textForAllUsers = new Text($qltextsforusersHelper->getTextFromParam(QltextsforusersHelper::PARAMS_ALL_USERS_TEXT));
