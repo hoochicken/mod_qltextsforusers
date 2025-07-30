@@ -90,6 +90,12 @@ class QltextsforusersHelper
         return !empty($this->user->id);
     }
 
+    public function checkIfUserIsLoggingInRightNow(): bool
+    {
+        // todo: use joomla input
+        return 'user.login' === ($_POST['task'] ?? '') && !empty($_POST['username'] ?? '') && !empty($_POST['password'] ?? '');
+    }
+
     public function prepareContent(?string $text): string
     {
         if (empty($text)) {
