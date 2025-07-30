@@ -65,7 +65,10 @@
 				</field>
 				<field name="usergroup_05_text" label="MOD_QLTEXTSFORUSERS_USERGROUP_05_TEXT" type="editor" buttons="true" filter="safehtml" height="150" />
 			</fieldset>
-            <fieldset name="content">
+                        <fieldset name="target">
+				<field name="target_page_after_login" label="MOD_QLTEXTSFORUSERS_TARGETAFTERLOGIN_LABEL" description="MOD_QLTEXTSFORUSERS_TARGETAFTERLOGIN_LABEL" default="" />
+			</fieldset>
+                        <fieldset name="content">
 				<field name="content_prepare" type="radio" class="btn-group btn-group-yesno" label="MOD_QLTEXTSFORUSERS_CONTENT_PREPARE_LABEL" description="MOD_QLTEXTSFORUSERS_CONTENT_PREPARE_LABEL" default="1">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
