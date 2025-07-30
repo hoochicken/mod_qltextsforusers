@@ -18,10 +18,12 @@ defined('_JEXEC') or die;
 /** @var \stdClass $module  */
 $fieldCount = 5;
 $prepareContent = (bool)$params->get('content_prepare', true);
+$targetAfterLogin = (string)$params->get('target_page_after_login', '');
 $textForUsergroups = [];
 
 $user = QltextsforusersHelper::getJoomlaUser();
-$qltextsforusersHelper = new QltextsforusersHelper($module, $params, $user);
+$input = getApplication()->getInput()
+$qltextsforusersHelper = new QltextsforusersHelper($module, $params, $user, $input);
 
 // for all users
 $textForAllUsers = new Text($qltextsforusersHelper->getTextFromParam(QltextsforusersHelper::PARAMS_ALL_USERS_TEXT));
@@ -29,6 +31,11 @@ $textForAllUsers = new Text($qltextsforusersHelper->getTextFromParam(Qltextsforu
 $textForUnloggedUser = !$qltextsforusersHelper->checkUserIsLoggedIn()
     ? new Text($qltextsforusersHelper->getTextFromParam(QltextsforusersHelper::PARAMS_UNLOGGED_USERS_TEXT))
     : new Text('');
+
+if ($qltextsforusersHelper->checkIfUserIsLoggingInRightNow() && !empty($targetAfterLogin)) {
+    header(sprintf('Location: %s', $targetAfterLogin));
+    exit;
+}
 
 if ($qltextsforusersHelper->checkUserIsLoggedIn()) {
     // for defined user groups, when logged in and usergroup in known
