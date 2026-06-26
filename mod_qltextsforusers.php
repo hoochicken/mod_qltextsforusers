@@ -47,7 +47,7 @@ if ($qltextsforusersHelper->checkUserIsLoggedIn()) {
         if (empty($textValue) || empty(strip_tags(trim($textValue)))) {
             continue;
         }
-        $textForUsergroups[] = (new Text($textValue))->setUserGroupId($usergroup)->setUserGroupSelect($select);
+        $textForUsergroups[] = new Text($textValue)->setUserGroupId($usergroup)->setUserGroupSelect($select);
     }
 }
 

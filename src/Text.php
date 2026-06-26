@@ -6,8 +6,8 @@ class Text
 
     private ?string $label;
     private ?string $text;
-    private ?int $userGroupId;
-    private ?int $userGroupSelect;
+    private ?int $userGroupId = null;
+    private ?int $userGroupSelect = null;
 
     public function __construct(?string $text, ?string $label = null)
     {

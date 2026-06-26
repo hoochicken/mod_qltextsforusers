@@ -30,15 +30,11 @@ class QltextsforusersHelper
     const PARAMS_USERGROUP_II_SELECT = 'usergroup_%s_select';
 
     public Registry $params;
-    public stdClass $module;
-    public ?User $user;
     public ?Dispatcher $dispatcher = null;
 
-    function __construct(stdClass $module, Registry $params, ?User $user)
+    function __construct(public stdClass $module, Registry $params, public ?User $user)
     {
-        $this->module = $module;
         $this->params = $params;
-        $this->user = $user;
     }
 
     public function getUsergroupSelectFromParam(int $select): int
